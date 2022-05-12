@@ -28,7 +28,7 @@ export class DiscordInteractionsStack extends cdk.Stack {
       handler: 'discord-slash-lambda.discordSlashCommandLambdaHandler',
       runtime: lambda.Runtime.NODEJS_12_X,
       environment: {
-        CLIENT_PUBLIC_KEY: clientPublicKeySecret.secretValueFromJson('CLIENT_PUBLIC_KEY').toString(),
+        CLIENT_PUBLIC_KEY: 'd8c1d173f769cf4aa663e53eebdafa601d4bc8e7c2006bcd9a4b069b6b850c76',
         SERVER_CONFIG: JSON.stringify(serverConfigs),
       },
       logRetention: logs.RetentionDays.ONE_WEEK,

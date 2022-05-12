@@ -6,47 +6,25 @@ import { ValheimWorldStack } from './valheim-world-stack';
 const app = new cdk.App();
 
 const env: cdk.Environment = {
-    account: '418390728672',
-    region: 'us-west-2',
+    account: '464584493694',
+    region: 'ap-southeast-1',
 }
 
-const hellheimValheimServerStack = new ValheimWorldStack(app, 'HellheimWorld', {
+const azureValheimServerStack = new ValheimWorldStack(app, 'AzurePlaysWorld', {
     env,
     passwordSecretId: 'valheimServerPass',
-    adminlistSecretId: 'adminlistValheim',
     environment: {
-        SERVER_NAME: "Hellheim Dedicated Server",
-        WORLD_NAME: "Hellheim",
+        SERVER_NAME: "AzurePlays's Server",
+        WORLD_NAME: "AzureValhalla",
     },
 })
 
-const grantapherValheimServerStack = new ValheimWorldStack(app, 'GrantapherWorld', {
+const newWorldServerStack = new ValheimWorldStack(app, 'NewWorld', {
     env,
     passwordSecretId: 'valheimServerPass',
-    adminlistSecretId: 'adminlistValheim',
     environment: {
-        SERVER_NAME: "Grantapher's Server",
-        WORLD_NAME: "GrantapherThanes",
-    },
-})
-
-const goblinoValheimServerStack = new ValheimWorldStack(app, 'GoblinoWorld', {
-    env,
-    passwordSecretId: 'valheimServerPass',
-    adminlistSecretId: 'adminlistValheim',
-    environment: {
-        SERVER_NAME: "No Goblin Smorc",
-        WORLD_NAME: "NoGoblin",
-    },
-})
-
-const testEmptyServerStack = new ValheimWorldStack(app, 'TestEmptyWorld', {
-    env,
-    passwordSecretId: 'valheimServerPass',
-    adminlistSecretId: 'adminlistValheim',
-    environment: {
-        SERVER_NAME: "GrantTest",
-        WORLD_NAME: "GrantTest",
+        SERVER_NAME: "AzurePlays's Server - To The North",
+        WORLD_NAME: "AzureToTheNorth",
     },
 })
 
@@ -54,9 +32,7 @@ new DiscordInteractionsStack(app, 'DiscordInteractionsStack', {
     env,
     clientIdSecretId: 'discordValheimBotClientPublicKey',
     servers: {
-        'hellheim': hellheimValheimServerStack.world,
-        'grantapher': grantapherValheimServerStack.world,
-        'goblino': goblinoValheimServerStack.world,
-        'test': testEmptyServerStack.world,
+        'valhalla': azureValheimServerStack.world,
+        'newWorld': newWorldServerStack.world
     },
 });

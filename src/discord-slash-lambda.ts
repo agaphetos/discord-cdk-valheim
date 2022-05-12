@@ -52,17 +52,18 @@ export const discordSlashCommandLambdaHandler = async (event: APIGatewayProxyEve
   const serverConfigs = JSON.parse(serverConfigString ?? '[]') as ServerConfig[]
 
   console.log(`Server Config: ${JSON.stringify(serverConfigs)}`)
+  console.log(`Request Body (Data): ${JSON.stringify(body.data)}`)
 
   const option = body.data.options[0]
   switch (option.name) {
     case "list":
       return list(serverConfigs)
     case "start":
-      return await start(serverConfigs, option.options[0].value)
+      return await start(serverConfigs, option.value)
     case "stop":
-      return await stop(serverConfigs, option.options[0].value)
+      return await stop(serverConfigs, option.value)
     case "status":
-      return await status(serverConfigs, option.options[0].value)
+      return await status(serverConfigs, option.value)
     default:
       console.error(`Found unexpected command: "${option.name}"`);
       return contentResponse('Unexpected command.')

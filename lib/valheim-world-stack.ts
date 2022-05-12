@@ -34,11 +34,13 @@ export class ValheimWorldStack extends cdk.Stack {
         RESTART_CRON: "0 6 * * *",
         BACKUPS_DIRECTORY: "/config/backups",
         BACKUPS_MAX_AGE: "1",
-        TZ: "US/Pacific",
+        TZ: "Asia/Singapore",
         STATUS_HTTP: "true",
-        SERVER_PASS: cdk.SecretValue.secretsManager(props.passwordSecretId, { jsonField: 'VALHEIM_SERVER_PASS' }).toString(),
-        ADMINLIST_IDS: props.adminlistSecretId ?
-          cdk.SecretValue.secretsManager(props.adminlistSecretId, { jsonField: 'ADMINLIST_IDS' }).toString() : '',
+        SERVER_PASS: "@zur3V@lhalla",
+        ADMINLIST_IDS: "76561198116671337",
+        // SERVER_PASS: cdk.SecretValue.secretsManager(props.passwordSecretId, { jsonField: 'VALHEIM_SERVER_PASS' }).toString(),
+        // ADMINLIST_IDS: props.adminlistSecretId ?
+          // cdk.SecretValue.secretsManager(props.adminlistSecretId, { jsonField: 'ADMINLIST_IDS' }).toString() : '',
         ...props.environment,
       },
     })
